@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# RIGHT 7 rlqusvfkenzowbdcpjtgayimhx
+# RIGHT 2 rvzmgqlkpocuhfntsdxebwaijy
 
 class DayOfWeekCalculator:
     def __init__(self, input:str):
@@ -12,27 +12,27 @@ class DayOfWeekCalculator:
     def parse_input(self):
         from re import fullmatch
 
-        a = fullmatch("(\d{4})-(\d{2})-(\d{2})", self.i)
+        b = fullmatch("(\d{4})-(\d{2})-(\d{2})", self.i)
 
-        self.y = int(a.group(1), 10)
-        self.m = int(a.group(2), 10)
-        self.d = int(a.group(3), 10)
+        self.y = int(b.group(1), 10)
+        self.m = int(b.group(2), 10)
+        self.d = int(b.group(3), 10)
 
     def print_output(self):
         dd = self.d
-        if self.m >= 3:
-            mm = self.m + 1
+        if self.m > 2:
+            mm = self.m
             yy = self.y
         else:
-            mm = self.m + 13
+            mm = self.m + 12
             yy = self.y - 1
-        u = yy % 100
-        s = yy // 100
-        v = (dd + ((13 * mm) // 5) + u + (u // 4) + (s // 4) - 2 * s + 5) % 7
-        print(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][v])
+        m = yy % 100
+        g = yy // 100
+        q = (dd + ((13 * (mm + 1)) // 5) + m + (m // 4) + (g // 4) - 2 * g + 5) % 7
+        print(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][q])
 from sys import argv
 
-f = DayOfWeekCalculator(argv[1])
-f.parse_input()
-f.print_output()
+l = DayOfWeekCalculator(argv[1])
+l.parse_input()
+l.print_output()
         
