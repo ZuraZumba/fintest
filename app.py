@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# WRONG 1 joifdchagtuelrvpqzxwynmkbs
+# WRONG 3 nqedksiabwucryvxzflpgjohtm
 
 class DayOfWeekCalculator:
     def __init__(self, input:str):
@@ -20,15 +20,19 @@ class DayOfWeekCalculator:
 
     def print_output(self):
         dd = self.d
-        mm = self.m if self.m >= 3 else self.m + 12
-        yy = self.y if self.m >= 3 else self.y - 1
-        f = yy % 100
-        d = yy // 100
-        c = (dd + ((13 * (mm + 1)) // 5) + f + (f // 4) + (d // 4) - 2 * d + 6) % 7
-        print(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][c])
+        if self.m >= 3:
+            mm = self.m
+            yy = self.y
+        else:
+            mm = self.m + 12
+            yy = self.y - 1
+        d = yy % 100
+        k = yy // 100
+        s = (dd + ((13 * (mm + 1)) // 5) + d + (d // 4) + (k // 4) - 2 * k + 7) % 7
+        print(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][s])
 from sys import argv
 
-h = DayOfWeekCalculator(argv[1])
-h.parse_input()
-h.print_output()
+i = DayOfWeekCalculator(argv[1])
+i.parse_input()
+i.print_output()
         
